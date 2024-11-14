@@ -79,57 +79,22 @@ Users should evaluate the model on their specific crops and farming conditions. 
 ## How to Get Started with the Model
 
 ```python
-import matplotlib.pyplot as plt
+
 from PIL import Image, UnidentifiedImageError
 from transformers import ViTFeatureExtractor, ViTForImageClassification
-
-label2id= {'Corn___Common_Rust': '0',
-  'Corn___Gray_Leaf_Spot': '1',
-  'Corn___Healthy': '2',
-  'Corn___Leaf_Blight': '3',
-  'Invalid': '4',
-  'Potato___Early_Blight': '5',
-  'Potato___Healthy': '6',
-  'Potato___Late_Blight': '7',
-  'Rice___Brown_Spot': '8',
-  'Rice___Healthy': '9',
-  'Rice___Hispa': '10',
-  'Rice___Leaf_Blast': '11',
-  'Wheat___Brown_Rust': '12',
-  'Wheat___Healthy': '13',
-  'Wheat___Yellow_Rust': '14'},
-id2label  = {'0': 'Corn___Common_Rust',
-  '1': 'Corn___Gray_Leaf_Spot',
-  '2': 'Corn___Healthy',
-  '3': 'Corn___Leaf_Blight',
-  '4': 'Invalid',
-  '5': 'Potato___Early_Blight',
-  '6': 'Potato___Healthy',
-  '7': 'Potato___Late_Blight',
-  '8': 'Rice___Brown_Spot',
-  '9': 'Rice___Healthy',
-  '10': 'Rice___Hispa',
-  '11': 'Rice___Leaf_Blast',
-  '12': 'Wheat___Brown_Rust',
-  '13': 'Wheat___Healthy',
-  '14': 'Wheat___Yellow_Rust'}
-
-feature_extractor = ViTFeatureExtractor.from_pretrained('WinKawaks/vit-tiny-patch16-224')
+feature_extractor = ViTFeatureExtractor.from_pretrained('wambugu1738/crop_leaf_diseases_vit')
 model = ViTForImageClassification.from_pretrained(
     'wambugu1738/crop_leaf_diseases_vit',
-    num_labels=15,
-    label2id=label2id,
-    id2label=id2label,
     ignore_mismatched_sizes=True
 )
-
 from PIL import Image
-image = Image.open('path_to_image')
+image = Image.open('<image_path>')
 inputs = feature_extractor(images=image, return_tensors="pt")
 outputs = model(**inputs)
 logits = outputs.logits
 predicted_class_idx = logits.argmax(-1).item()
-print("Predicted class:", model.config.id2label[str(predicted_class_idx)])
+print("Predicted class:", model.config.id2label[predicted_class_idx])
+
 ```
 
 ## Training Details
