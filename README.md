@@ -16,7 +16,7 @@ pipeline_tag: image-classification
 
 # Model Card for Smart Farming Disease Detection Transformer
 
-This model is a Vision Transformer (ViT) designed to identify plant diseases in crops as part of a smart agricultural farming system. It has been trained on a diverse dataset of plant images, including different disease categories affecting crops such as corn, potato, rice, and wheat. The model aims to provide farmers and agronomists with real-time disease detection for better crop management.
+This [model](https://huggingface.co/wambugu71/crop_leaf_diseases_vit)  is a Vision Transformer (ViT) designed to identify plant diseases in crops as part of a smart agricultural farming system. It has been trained on a diverse dataset of plant images, including different disease categories affecting crops such as corn, potato, rice, and wheat. The model aims to provide farmers and agronomists with real-time disease detection for better crop management.
 
 ## Model Details
 
