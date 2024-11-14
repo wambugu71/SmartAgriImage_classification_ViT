@@ -82,7 +82,7 @@ Users should evaluate the model on their specific crops and farming conditions. 
 
 from PIL import Image, UnidentifiedImageError
 from transformers import ViTFeatureExtractor, ViTForImageClassification
-feature_extractor = ViTFeatureExtractor.from_pretrained('wambugu1738/crop_leaf_diseases_vit')
+feature_extractor = ViTFeatureExtractor.from_pretrained('wambugu71/crop_leaf_diseases_vit')
 model = ViTForImageClassification.from_pretrained(
     'wambugu1738/crop_leaf_diseases_vit',
     ignore_mismatched_sizes=True
